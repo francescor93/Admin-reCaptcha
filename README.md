@@ -6,6 +6,8 @@ Plugin for [YOURLS](http://yourls.org) `v1.7 (possibly earlier, not tested) addi
 Description
 -----------
 Spam protection for private YOURLS admin interface. Any unauthenticated user is required to pass a reCaptcha in order to login into Admin Interface
+
+Installation
 ------------
 1. 	Copy this folder in `/user/plugins`.
 2. 	Go to the Plugins administration page ( *eg* `http://sho.rt/admin/plugins.php` ) and activate the plugin.
