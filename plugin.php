@@ -3,7 +3,7 @@
 Plugin Name: Admin reCaptcha
 Plugin URI: https://github.com/armujahid/Admin-reCaptcha.git
 Description: This plugin enable reCapcha on Admin login screen
-Version: 1.1
+Version: 1.2
 Author: Abdul Rauf
 Author URI: http://armujahid.me/
 */
@@ -84,14 +84,15 @@ function abdulrauf_adminreCaptcha_addjs() {
 	$siteKey = yourls_get_option( 'abdulrauf_adminreCaptcha_pub_key' );
 	?>
 	<script type="text/javascript">
-	//JQuery function to add div for reCaptcha widget and loadCaptcha after loading document
+	//JQuery function to add div for reCaptcha widget and load js only on login screen
 	$(document).ready(function() {
 		var logindiv = document.getElementById('login');
-		if (logindiv != null) { //check if we are no login screen
+		if (logindiv != null) { //check if we are on login screen
+			//getting reCaptcha script by jquery only on login screen
+			$.getScript( "https://www.google.com/recaptcha/api.js?onload=loadCaptcha&render=explicit");
 			var form = logindiv.innerHTML;
-			var index = form.indexOf('<p style="text-align: right;">');
+			var index = form.indexOf('<p style="text-align: right;">'); //finding tag before which reCaptcha widget should appear
 			document.getElementById('login').innerHTML = form.slice(0, index) + '<div id="captcha_container"></div>' + form.slice(index);	    
-			//loadCaptcha();
 		}
     });
 	// JavaScript function to explicitly render the reCAPTCHA widget
@@ -101,7 +102,6 @@ function abdulrauf_adminreCaptcha_addjs() {
 	  });
 	};
 	</script>
-	<script src="https://www.google.com/recaptcha/api.js?onload=loadCaptcha&render=explicit" async defer></script>
 	<?php
 }
 ?>
