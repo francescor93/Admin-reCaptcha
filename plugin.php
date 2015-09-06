@@ -73,7 +73,6 @@ function abdulrauf_adminreCaptcha_save_admin()
     }
     echo "Saved";
 }
-yourls_add_action( 'plugins_loaded', 'abdulrauf_adminreCaptcha_plugin_init' );
 
 
 
