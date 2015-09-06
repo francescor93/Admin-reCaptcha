@@ -12,6 +12,7 @@ if( !defined( 'YOURLS_ABSPATH' ) ) die();
 
 yourls_add_action( 'pre_login_username_password', 'abdulrauf_adminreCaptcha_validatereCaptcha' );
 
+// Validates reCaptcha
 function abdulrauf_adminreCaptcha_validatereCaptcha()
 {
 	include('captcha.php'); 
@@ -29,13 +30,13 @@ function abdulrauf_adminreCaptcha_validatereCaptcha()
 	}
 }
 
-// Register your plugin admin page
+// Register plugin on admin page
 yourls_add_action( 'plugins_loaded', 'abdulrauf_adminreCaptcha_init' );
 function abdulrauf_adminreCaptcha_init() {
     yourls_register_plugin_page( 'adminreCaptcha', 'Admin reCaptcha Settings', 'adminreCaptcha_config_page' );
 }
 
-// The function that will draw the admin page
+// The function that will draw the config page
 function adminreCaptcha_config_page() {
     	 if( isset( $_POST['abdulrauf_adminreCaptcha_public_key'] ) ) {
 	        yourls_verify_nonce( 'abdulrauf_adminreCaptcha_nonce' );
@@ -57,6 +58,7 @@ function adminreCaptcha_config_page() {
 
 }
 
+// Save reCaptcha keys in database 
 function abdulrauf_adminreCaptcha_save_admin()
 {
 	$pubkey = $_POST['abdulrauf_adminreCaptcha_public_key'];
