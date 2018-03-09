@@ -17,9 +17,9 @@ Installation
 
 License
 -------
-YOURLS' license, aka *"Do whatever the hell you want with it"*.
+MIT license
 
 Contact
 -------
-Email: mail@armujahid.me
+Email: mail@armujahid.me\
 Website: http://armujahid.me
